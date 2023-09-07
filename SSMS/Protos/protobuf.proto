@@ -1,0 +1,22 @@
+syntax = "proto3";
+option csharp_namespace = "SSMS.Protos";
+
+
+
+service StudentService {
+    rpc GetStudents (empty) returns (StudentList);
+}
+
+message empty {
+}
+message Student {
+    string firstName = 1;
+    string lastName = 2;
+    int32 age = 3;
+}
+
+message StudentList {
+    repeated Student students = 1;
+}
+
+

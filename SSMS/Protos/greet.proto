@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "SSMS";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  //rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc ExceuteQuery (Empty) returns (CustomerList);
+  //rpc ExecuteQuery(QueryRequest) returns (CustomerList);
+   //rpc GetStudents (QueryRequest) returns (StudentList);
+   rpc GetCustomerDetail(CustomerID) returns (Customer);
+   rpc GetCustomerDetailBySP(CustomerID) returns (Customer);//for stored procedure
+}
+
+message QueryRequest {
+     string sql_query = 1;
+}
+message Empty {
+}
+message Customer {
+    int32 Id = 1;
+    string FirstName = 2;
+    string LastName = 3;
+    int32 Age=4;
+    string City=5;
+}
+
+message CustomerList {
+    repeated Customer customer = 1;
+}
+
+message CustomerID{
+    int32 Id=1;
+}
+
